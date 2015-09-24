@@ -1,0 +1,70 @@
+<div class="tab-content">
+  <div class="tab-pane active">
+    <div class="tab-aside">
+      <div class="tab-aside-content">
+        <div class="tab-aside-group header" ui-sref-active="active">
+          <a class="group-text" ui-sref=".({tag:'all'})">全部</a>
+        </div>
+        <div class="tab-aside-group" ng-repeat="tag in tags" ng-mouseleave="tag.$$activeDel=false" ui-sref-active="active">
+          <a class="group-text" ui-sref=".({tag:tag.id})">{{tag.name}}</a>
+          <span class="group-close" ng-click="tag.$$activeDel=true" ng-if="!vm.isPublic || isAdmin"><i class="fa fa-times"></i></span>
+          <span class="del-btn" ng-click="deleteTag(tag.id)" ng-class="{'active': tag.$$activeDel}">删除</span>
+        </div>
+        <div class="tab-aside-group footer stack1 transparent" ng-click="create()" ng-if="isAdmin || !vm.isPublic">
+          <span class="group-text" ><i class="icon-plus"></i>添加分组</span>
+        </div>
+        <div class="tab-aside-group footer" ng-click="addEmptyPage()">
+          <span class="group-text">创建空白页面</span>
+        </div>
+      </div>
+    </div>
+    <div class="templates-wrap tab-main">
+      <div class="tab-main-content" ng-class="{padding: !(isAdmin || !vm.isPublic)}">
+        <div class="tab-manage clearfix" ng-if="isAdmin || !vm.isPublic">
+          <div class="pull-left tab-manage-btn" ng-show="!vm.isOperating">
+            <span ng-click="vm.isOperating=true">管理</span>
+          </div>
+          <div class="pull-left tab-manage-btn" ng-show="vm.isOperating">
+            <span ng-click="cancelSelect()">取消选择</span>
+            <span ng-click="deletePages()">删除</span>
+          </div>
+          <!-- 全部 -->
+          <div class="pull-left tab-manage-btn" ng-show="vm.isOperating" ng-if="$stateParams.tag=='all'">
+            <span>加入分组:</span>
+          </div>
+          <div class="pull-left" style="width:100px;" ng-show="vm.isOperating" ng-if="$stateParams.tag=='all'">
+            <select class="form-control" ng-change="moveToTag(currentGroup)" ng-model="currentGroup">
+              <option value="">选择分组</option>
+              <option ng-repeat="tag in tags" value="{{tag.id}}">{{tag.name}}</option>
+            </select>
+          </div>
+          <!-- 全部 end -->
+
+          <!-- tag -->
+          <div class="pull-left tab-manage-btn" ng-show="vm.isOperating" ng-if="$stateParams.tag != 'all'">
+            <span ng-click="moveFromTag($stateParams.tag)">移出分组</span>
+          </div>
+          <!-- tag end -->
+
+          <div class="pull-right tab-manage-btn" ng-show="!vm.isOperating">
+            <span ng-click="savePage()" ng-show="isCommon">保存为通用模板</span>
+            <span ng-click="savePage()" ng-show="!isCommon">保存为我的模板</span>
+          </div>
+        </div>
+        <div style="margin-top:15px;" ng-class="{'focused':vm.isOperating}">
+          <div ng-repeat="item in totalData | tag: $stateParams.tag | page: currentPage: 21" class="templates-item-wrap">
+            <div class="templates-item" ng-mouseleave="item.$$showDelete=false" ng-click="selectItem(item)">
+              <span class="checked" ng-class="{'active':item.$$isSelect}"><i class="icon-check"></i></span>
+              <span class="close-btn" ng-click="item.$$showDelete=true;$event.stopPropagation()"><i class="fa fa-times"></i></span>
+              <span class="del-btn" ng-show="item.$$showDelete" ng-click="deletePage(item.id, $index)">删除</span>
+              <div page-template-preview="item"></div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-bar">
+          <pagination boundary-links="true" max-size="maxSize" items-per-page="21" total-items="totalData.length" ng-model="currentPage" ng-change="pageChanged()" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" rotate="false" num-pages="numPages"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

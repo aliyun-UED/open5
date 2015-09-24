@@ -1,0 +1,100 @@
+<div>
+  <div class="tab-block clearfix" style="margin-bottom:7px">
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-4 control-label">背景颜色</label>
+      <div class="col-sm-8" style="padding-left:0;">
+        <div class="colorpicker-container" input-colorpicker ng-model="css.color"></div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-block clearfix" style="margin-bottom:7px">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">背景图片</label>
+      <div class="col-sm-8" style="padding-left:0;top:3px;position:relative;">
+        <button class="btn btn-primary btn-custom" ng-click="replace();">替换</button>
+        <button class="btn btn-default btn-custom" style="margin-left:3px;" ng-click="crop();">剪裁</button>
+        <button class="btn btn-default btn-custom" style="margin-left:2px;" ng-click="clearBg();">清除</button>
+      </div>
+    </div>
+  </div>
+  <div class="tab-block clearfix" style="margin-bottom:7px">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">背景效果</label>
+      <div class="col-sm-8" style="padding-left:0;top:3px;position:relative;">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-3 btn-border btn-custom " ng-class="{'active': effect.name == 'none'}" ng-click="setEffect('none')">无</button>
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.name == 'stretch'}" ng-click="setEffect('stretch')">伸缩</button>
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.name == 'slide'}" ng-click="setEffect('slide')">滑动</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-block clearfix" style="margin-bottom:7px" ng-show="effect.name == 'stretch'">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">运动方式</label>
+      <div class="col-sm-8" style="padding-left:0;top:3px;position:relative;">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.mode == 'origin'}" ng-click="setEffectMode('origin')">原地</button>
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.mode == 'horizontal'}" ng-click="setEffectMode('horizontal')">水平</button>
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.mode == 'vertical'}" ng-click="setEffectMode('vertical')">垂直</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-block clearfix" style="margin-bottom:7px" ng-show="effect.name == 'slide'">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">运动方式</label>
+      <div class="col-sm-8" style="padding-left:0;top:3px;position:relative;">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.mode == 'horizontal'}" ng-click="setEffectMode('horizontal')">水平</button>
+          <button type="button" class="btn btn-3 btn-border btn-custom" ng-class="{'active': effect.mode == 'vertical'}" ng-click="setEffectMode('vertical')">垂直</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix" >
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-4 control-label">页面名称</label>
+      <div class="col-sm-8" style="padding-left:0;">
+        <input class="form-control" placeholder="填写页面名称" ng-change="vm.onChange()" ng-model="vm.docProperties.name">
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">背景音乐</label>
+      <div class="col-sm-8" style="padding-left:0;top:3px;position:relative;">
+        <button class="btn btn-primary btn-custom" ui-sref="app.music.library">替换音乐</button>
+        <button class="btn btn-default btn-custom" style="margin-left:10px;" ng-click="removeMusic();">移除音乐</button>
+      </div>
+    </div>
+    <div class="tab-block-desc" ng-show="vm.music.url"><span>当前音乐: </span><span>{{vm.music.name || '未命名'}}</span></div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">翻页效果</label>
+      <div class="col-sm-8" style="padding-left:0">
+        <select class="form-control"
+                style="border:1px solid #C9C9C9;"
+                ng-model="docProperties.turnType"
+                ng-change=""
+                ng-options="transition.value as transition.label for transition in vm.pageTransition">
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-4 control-label">翻页图标</label>
+      <div class="col-sm-8 clearfix" style="padding-left:0">
+        <div class="btn-group pull-right" choice ng-model="vm.page.turnIcon" data-default="no">
+          <button type="button" class="btn btn-default btn-custom" data-value="yes">是</button>
+          <button type="button" class="btn btn-default btn-custom" data-value="no">否</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,91 @@
+<div>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:10px;">
+      <label class="col-sm-4 control-label">排序</label>
+      <div class="col-sm-8 clearfix" style="padding-left:0">
+        <div class="pull-left">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="layerTop()"><i class="fa fa-sort-amount-asc"></i></button>
+            <button type="button" class="btn btn-default" ng-click="layerBottom()"><i class="fa fa-sort-amount-desc"></i></button>
+          </div>
+        </div>
+        <div class="pull-right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="layerUp()"><i class="fa fa-mail-forward"></i></button>
+            <button type="button" class="btn btn-default" ng-click="layerDown()"><i class="fa fa-mail-reply"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" style="margin-bottom:10px;">
+      <label class="col-sm-4 control-label">对齐（X）</label>
+      <div class="col-sm-8" style="padding-left:0">
+        <div class="btn-group" choice ng-model="vm.css.left">
+          <button type="button" class="btn btn-default" data-value="0px"><i class="fa fa-align-left"></i></button>
+          <button type="button" class="btn btn-default" data-value="{{blockCenter()}}"><i class="fa fa-align-center"></i></button>
+          <button type="button" class="btn btn-default" data-value="{{blockRight()}}"><i class="fa fa-align-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-4 control-label">对齐（Y）</label>
+      <div class="col-sm-8" style="padding-left:0">
+        <div class="btn-group" choice ng-model="vm.css.top">
+          <button type="button" class="btn btn-default" data-value="0px"><i class="fa fa-arrow-up"></i></button>
+          <button type="button" class="btn btn-default" data-value="{{blockVerticalCenter()}}"><i class="fa fa-arrows-v"></i></button>
+          <button type="button" class="btn btn-default" data-value="{{blockVerticalBottom()}}"><i class="fa fa-arrow-down"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0">
+      <label class="col-sm-3 control-label">大小</label>
+      <label class="col-sm-1 control-label" style="padding-left:0">宽</label>
+      <div class="col-sm-3" style="padding-left:0">
+        <input spinner unit="px" ng-model="vm.css.width" type="text" max="500" class="form-control" >
+      </div>
+      <label class="col-sm-1 control-label" style="padding-left:0">高</label>
+      <div class="col-sm-3" style="padding-left:0">
+        <input spinner unit="px" ng-model="vm.css.height" type="text" max="700" class="form-control" >
+      </div>
+    </div>
+    <!-- <div class="clearfix" style="padding-left:66px;">
+      <div class="checkbox" style="margin-bottom:0">
+        <label>
+          <input type="checkbox" ng-model="vm.forceRatio">
+          强制按比例
+        </label>
+      </div>
+    </div> -->
+    <div class="" style="padding-left:66px" ng-show="showImageSetting">
+      <button class="btn-c middle" style="width:198px" ng-click="setOrginSize()">原始尺寸</button>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-3 control-label">位置</label>
+      <label class="col-sm-1 control-label" style="padding-left:0">X</label>
+      <div class="col-sm-3" style="padding-left:0">
+        <input spinner unit="px" ng-model="vm.css.left" type="text" max="500" class="form-control" >
+      </div>
+      <label class="col-sm-1 control-label" style="padding-left:0">Y</label>
+      <div class="col-sm-3" style="padding-left:0">
+        <input spinner unit="px" ng-model="vm.css.top" type="text" max="700" class="form-control" >
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group slider-block" style="margin-bottom:0;">
+      <label class="col-sm-3 control-label">旋转</label>
+      <div class="pull-left" style="padding-left:0;">
+        <slider ng-model="vm.css.rotation" min="0" step="1" max="359" rotate-slider-helper transform-value="transform"></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{vm.css.rotation | parseRotate}}</span></div>
+    </div>
+  </div>
+  <hr>
+</div>

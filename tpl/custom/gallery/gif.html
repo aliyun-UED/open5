@@ -1,0 +1,10 @@
+<div class="images-items">
+  <div class="images-item-wrap" ng-repeat="img in gifs">
+    <div class="images-item" ng-class="{active:img.active}" ng-click="choose(img)" ng-mouseleave="img.showDelete=false">
+      <span class="checked"><i class="icon-check"></i></span>
+      <span class="images-item-del" ng-click="img.showDelete=true;$event.stopPropagation()"><i class="fa fa-times"></i></span>
+      <span class="images-item-del-btn" ng-show="img.showDelete">删除</span>
+      <img ng-src="{{img.url}}">
+    </div>
+  </div>
+</div>

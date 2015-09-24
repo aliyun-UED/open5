@@ -1,0 +1,8 @@
+<div class="edit_tools">
+  <div class="btn-group tabs-list btn-group-justified">
+    <a ui-sref="tab.url" class="btn btn-lg"  ng-repeat="tab in $state.current.data" ng-class="{true:'btn-info',false:'btn-default'}[$state.includes(tab.type)]">{{tab.name}}</a>
+  </div>
+  <div class="tabs-content">
+    <div ui-view="tab" class="tab-pane"></div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+<div class="edit_tools">
+  <div class="btn-group tabs-list btn-group-justified">
+    <a ui-sref="{{tab.url}}" class="btn btn-lg btn-default"  ui-sref-active="selected" ng-repeat="tab in $state.current.data.tabs" ng-class="{'last': $last, 'first': $first}">{{tab.name}}</a>
+  </div>
+  <div class="tabs-content">
+    <div ui-view="tab" class="tab-pane"></div>
+  </div>
+</div>

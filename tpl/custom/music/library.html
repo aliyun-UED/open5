@@ -1,0 +1,30 @@
+
+<div class="tab-main-content">
+  <div class="tab-list-wrap" style="margin-top:32px;position:relative;">
+    <div class="selected-area" ng-show="vm.selectedItem">
+      <span class="select-icon"><i class="fa fa-check"></i></span>
+      <span>已选择: </span>
+      <span>{{vm.selectedItem.name}}</span>
+      <span class="cancell-select" ng-click="vm.selectedItem.$$active=false;vm.selectedItem=null;"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <ul class="tab-list list-striped">
+      <li class="clearfix" ng-repeat="music in vm.musicCollection | page:currentPage:14" ng-click="vm.selectItem(music)" ng-class="{active: music.$$active}">
+        <span class="pull-left music-name">{{music.name}}</span>
+        <div class="pull-right">
+          <span class="music-size">{{music.size | size}}</span>
+          <span class="music-play" ng-show="!music.$$playing" ng-click="vm.play($event, music.url, music);"><i class="fa fa-play"></i></span>
+          <span class="music-pause" ng-show="music.$$playing" ng-click="vm.stop($event, music);"><i class="fa fa-pause"></i></span>
+          <span class="music-del" ng-hide="!isAdmin && vm.isPublic"><i class="fa fa-times" ng-click="vm.deleteMusic($event, music)"></i></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pagination-bar">
+    <pagination boundary-links="true" max-size="maxSize" items-per-page="14" total-items="vm.musicCollection.length" ng-model="currentPage" first-text="首页" last-text="尾页" previous-text="&lsaquo;" next-text="&rsaquo;" rotate="false" num-pages="numPages"></pagination>
+  </div>
+  <div class="tab-music-btns">
+    <button class="btn" style="margin-right:5px;" ng-click="cancel()">取消</button>
+    <button class="btn btn-primary" ng-click="save()">确定</button>
+  </div>
+</div>

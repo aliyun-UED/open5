@@ -1,0 +1,50 @@
+<div>
+  <div class="modal-header">
+    <div class="modal-list clearfix">
+      <div class="modal-desc pull-left">背景音乐</div>
+      <span class="close modal-close pull-right" ng-click="cancel()">&times;</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <div class="tab-aside">
+          <div class="tab-aside-content">
+            <div class="tab-aside-group header" ui-sref-active="active">
+              <a class="group-text" ui-sref="app.music.library">乐曲库</a>
+            </div>
+            <div class="tab-aside-group" ui-sref-active="active">
+              <a class="group-text" ui-sref="app.music.my">我的音乐</a>
+            </div>
+            <div class="tab-aside-group footer stack1 transparent" ng-click="vm.openOuter()">
+              <span class="group-text">添加外链</span>
+            </div>
+            <div class="tab-aside-group footer">
+              <span class="group-text"><i class="fa fa-cloud-upload"></i>上传</span>
+              <input uploader="" files="vm.musicCollection" upload-type="vm.type" is-public="isAdmin && vm.isPublic" type="file" multiple="multiple" accept="audio/*" class="upload-mask">
+            </div>
+          </div>
+        </div>
+        <div class="templates-wrap tab-main" ui-view="tab"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mask-loading" ng-if="store.loading">
+    <i class="fa fa-spinner loading-icon animation-spin"></i>
+  </div>
+  <div class="add-group-modal" ng-show="vm.creatOuterLink">
+    <div class="add-group modal-content">
+      <div class="add-group-header modal-header">
+        <span class="add-group-title">外部链接</span>
+      </div>
+      <div class="add-group-body modal-body">
+        <input type="text" class="form-control" placeholder="输入MP3格式的链接" ng-model="vm.outerLink" ng-class="{'has-error': vm.isValidate}" ng-change="vm.isValidate=false">
+        <span class="error-msg" ng-show="vm.isValidate">{{vm.errorMsg || '请输入正确格式的链接地址'}}</span>
+      </div>
+      <div class="add-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="vm.addMusic('outer')">确定</button>
+        <button type="submit" class="btn" ng-click="vm.cancel()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

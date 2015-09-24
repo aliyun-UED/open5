@@ -1,0 +1,32 @@
+.asSpinner {
+  position: relative;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.asSpinner-up,
+.asSpinner-down {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+.asSpinner-down {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 7px solid #333;
+  right: 6px;
+  top: 20px;
+}
+.asSpinner-up {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 7px solid #333;
+  right: 6px;
+  top: 7px;
+}
+

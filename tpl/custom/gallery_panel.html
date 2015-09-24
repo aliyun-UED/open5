@@ -1,0 +1,16 @@
+<div>
+  <div class="modal-header">
+    <div class="modal-list clearfix">
+      <div class="modal-desc pull-left">选择图片</div>
+      <div class="modal-items pull-left">
+        <span ui-sref-active="active"><a ui-sref="app.gallery.common.static">公共素材库</a></span>
+        <span style="margin-left:40px;" ui-sref-active="active"><a ui-sref="app.gallery.my">我的素材库</a></span>
+      </div>
+      <span class="close modal-close pull-right" ng-click="cancel()">&times;</span>
+      <div class="pull-right">
+        <button class="btn btn-primary btn-sm modal-upload">上传新图片</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body" ui-view="tab"></div>
+</div>

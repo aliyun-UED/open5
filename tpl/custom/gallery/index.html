@@ -1,0 +1,33 @@
+<div>
+  <div class="modal-header">
+    <div class="modal-list clearfix">
+      <div class="modal-desc pull-left">选择图片</div>
+      <div class="modal-items pull-left">
+        <span ui-sref-active="active"><a ui-sref="app.gallery.common">公共素材库</a></span>
+        <span style="margin-left:40px;" ui-sref-active="active"><a ui-sref="app.gallery.my">我的素材库</a></span>
+      </div>
+      <span class="close modal-close pull-right" ng-click="cancel()">&times;</span>
+    </div>
+  </div>
+  <div class="modal-body" ui-view="top"></div>
+  <div class="mask-loading" ng-class="{active:store.loading}">
+    <i class="fa fa-spinner loading-icon animation-spin"></i>
+  </div>
+  <div class="mask-loading" ng-class="{active:store.processing}">
+    <span class="loading-text">正在载入图片中...</span>
+  </div>
+  <div class="add-group-modal" ng-show="vm.creatGroup">
+    <div class="add-group modal-content">
+      <div class="add-group-header modal-header">
+        <span class="add-group-title">创建新分组</span>
+      </div>
+      <div class="add-group-body modal-body">
+        <input type="text" class="form-control" placeholder="分组名称" ng-model="vm.newGroup">
+      </div>
+      <div class="add-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="vm.addTag()">确定</button>
+        <button type="submit" class="btn" ng-click="vm.cancel()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="edit_menu">
+  <div class="btn-group tabs-list btn-group-justified">
+    <a ui-sref="tab.url" class="btn btn-lg btn-default"  ng-repeat="tab in $state.current.data.tabs" ng-class="{selected: $state.current.data.tag == tab.type}" ng-style="{'border-right':$index == $last ? '1px solide #ddd': ''}">{{tab.name}}</a>
+  </div>
+  <div class="tabs-content">
+    <div ui-view="tab" class="tab-pane"></div>
+  </div>
+</div>

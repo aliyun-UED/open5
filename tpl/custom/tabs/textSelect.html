@@ -1,0 +1,128 @@
+<div>
+  <div class="tab-block clearfix" style="margin-bottom:-6px;">
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0">字体</label>
+          <div class="col-sm-8" style="padding-left:0;padding-right:0">
+
+            <select ng-select-box-it auto-width="auto" ng-options="font.label for font in vm.fontFamilyList" ng-model="vm.font" on-select="vm.onChange()"></select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <div class="col-sm-8 pull-right" style="padding-left:0;padding-right:0">
+            <select ng-select-box-it auto-width="auto" ng-options="font.value as font.label for font in vm.fontSizeList" ng-model="vm.css.fontSize" on-select="vm.changeFontSize()" style="width:96px;"></select>
+          </div>
+           <label class="col-sm-3 control-label pull-right" style="padding-left:0;padding-right:0">字号</label>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-11" style="padding-right:0">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0;width: 40.25px;">背景</label>
+          <div class="col-sm-9" style="padding-left:0;padding-right:0">
+            <div iframe-colorpicker ng-model="vm.css.backColor" on-move="vm.changeBg()" on-hide="vm.changeBg()" class="colorpicker-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-11" style="padding-right:0">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0;width: 40.25px;">文字</label>
+          <div class="col-sm-9" style="padding-left:0;padding-right:0">
+            <div iframe-colorpicker ng-model="vm.css.foreColor" on-move="vm.changeColor()" iframe-url="tpl/iframe/color.html" class="colorpicker-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:15px">
+      <label class="col-sm-4 control-label" style="padding-right:0;">字体风格</label>
+      <div class="col-sm-8">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" ng-class="{'btn-info':vm.css.bold=='false'? false:true}" ng-click="setBold()"><i class="fa fa-bold"></i></button>
+          <button type="button" class="btn btn-default" ng-class="{'btn-info':vm.css.italic=='false'? false:true}" ng-click="setItalic()"><i class="fa fa-italic"></i></button>
+          <button type="button" class="btn btn-default" ng-class="{'btn-info':vm.css.underline=='false'? false:true}" ng-click="setUnderline()"><i class="fa fa-underline"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" style="margin-bottom:15px">
+      <label class="col-sm-4 control-label" style="padding-right:0;">水平对齐</label>
+      <div class="col-sm-8">
+        <div class="btn-group">
+          <button type="button" class="btn" ng-model="vm.css.justifyLeft" ng-class="{'true':'btn-info', 'false':'btn-default'}[vm.css.justifyLeft == 'true']" ng-click="setAlign('justifyLeft');"><i class="fa fa-align-left"></i></button>
+          <button type="button" class="btn" ng-model="vm.css.justifyRight" ng-class="{'true':'btn-info', 'false':'btn-default'}[vm.css.justifyRight == 'true']" ng-click="setAlign('justifyRight');"><i class="fa fa-align-right"></i></button>
+          <button type="button" class="btn" ng-model="vm.css.justifyCenter" ng-class="{'true':'btn-info', 'false':'btn-default'}[vm.css.justifyCenter == 'true']" ng-click="setAlign('justifyCenter');"><i class="fa fa-align-center"></i></button>
+          <button type="button" class="btn" ng-model="vm.css.justifyFull" ng-class="{'true':'btn-info', 'false':'btn-default'}[vm.css.justifyFull == 'true']" ng-click="setAlign('justifyFull');"><i class="fa fa-align-justify"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" style="margin-bottom:0px">
+      <label class="col-sm-4 control-label" style="padding-right:0;">垂直对齐</label>
+      <div class="col-sm-8">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" ng-click="vm.verticalTop()"><i class="fa fa-align-left"></i></button>
+          <button type="button" class="btn btn-default" ng-click="vm.verticalCenter()"><i class="fa fa-align-center"></i></button>
+          <button type="button" class="btn btn-default" ng-click="vm.verticalBottom()"><i class="fa fa-align-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">字间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="css.letterSpacing" type="text" class="form-control" >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">行间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="" step="0.1" max="5" precision="1" ng-model="css.lineHeight" type="text" class="form-control" on-change="vm.updateHeight();">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">左间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="css.paddingLeft" type="text"  value="0px" class="form-control" >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">右间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="css.paddingRight" type="text"  value="0px" class="form-control" >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">上边距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="css.paddingTop" type="text"  value="0px" class="form-control" on-change="vm.updateHeight();">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a>全部图片</a></li>
+</ul>
+<div class="crop-panel" cropper-wrap>
+  <div class="crop-display" cropper ng-model="store.cropImage"></div>
+  <div class="crop-operate">
+    <div class="crop-operate-tip">
+      <p><strong>提示</strong></p>
+      <p>背景图片推荐尺寸 640X1012，小于2M；</p>
+      <p>控制裁切框选择图像中您满意的部分；</p>
+      <p>按住shfit，固定裁剪比例；</p>
+      <p>双击选定区域即可完成“剪裁并添加”的操作；</p>
+      <p>点击“添加”按钮，图像会以完整状态添加至舞台。</p>
+    </div>
+    <div class="crop-operate-btns">
+      <button class="btn btn-primary" ng-click="add()">添加</button>
+      <button class="btn" ng-click="cropToAdd()">裁剪并添加</button>
+      <button class="btn btn-default" ng-click="drop()">取消</button>
+    </div>
+  </div>
+  <div class="crop-cancel" ng-click="drop()">
+    <i class="fa fa-chevron-up"></i>
+  </div>
+</div>
+<div class="tab-content">
+  <div class="tab-pane active">
+    <div class="images-items">
+      <div class="images-item-wrap" ng-repeat="img in vm.myPhoto">
+        <div class="images-item" ng-class="{active:img.active,error:img.status==10,loading:img.status==20}" ng-click="choose(img);" ng-mouseleave="img.showDelete=false">
+          <span class="checked"><i class="icon-check"></i></span>
+          <span class="images-item-loading"></span>
+          <span class="images-item-del" ng-click="img.showDelete=true;$event.stopPropagation()"><i class="fa fa-times"></i></span>
+          <span class="images-item-del-btn" ng-show="img.showDelete" ng-click="vm.del(img,$event)">删除</span>
+          <img ng-src="{{img.url}}" ng-if="img.url">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

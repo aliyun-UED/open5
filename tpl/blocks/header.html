@@ -1,0 +1,92 @@
+<!-- navbar header -->
+<div class="navbar-header {{app.settings.navbarHeaderColor}}">
+
+  <a href="#/" class="brand-icon" style="width:51px;height:51px;">
+    <span class="" style="width:51px;height:51px;"></span>
+  </a>
+
+  <a href="#/" class="navbar-brand text-lt" style="height:51px; padding-left:15px; padding-right:0;line-height: 51px;">
+    Open5
+  </a>
+  <!-- / brand -->
+</div>
+<!-- / navbar header -->
+
+<!-- navbar collapse -->
+<div class="collapse pos-rlt edit_component navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+
+  <ul class="nav navbar-nav">
+    <li>
+      <a ng-click="addText()">
+        <i class="fa fa-text-width"></i>
+        <span class="icon-desc">文字</span>
+      </a>
+    </li>
+    <li >
+      <a ng-click="addImage()">
+        <i class="fa fa-file-image-o"></i>
+        <span class="icon-desc">图片</span>
+      </a>
+    </li>
+    <li >
+      <a ng-click="addMusic()">
+        <i class="fa fa-music"></i>
+        <span class="icon-desc">音乐</span>
+      </a>
+    </li>
+    <!-- <li>
+      <a>
+        <i class="icon-list"></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i class="icon-loop"></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i class="icon-map"></i>
+      </a>
+    </li>
+    <li >
+      <a >
+        <i class="fa fa-video-camera"></i>
+      </a>
+    </li>
+    <li  >
+      <a >
+        <i class="fa fa-sliders"></i>
+      </a>
+    </li> -->
+  </ul>
+
+  <!-- nabar right -->
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a ng-click="save();">
+        <i class="fa fa-save"></i>
+        <span class="icon-desc">保存</span>
+      </a>
+    </li>
+    <li>
+      <a ng-click="preview();">
+        <i class="fa fa-eye"></i>
+        <span class="icon-desc">预览</span>
+      </a>
+    </li>
+    <li>
+      <a ng-click="publish();">
+        <i class="fa fa-send"></i>
+        <span class="icon-desc">发布</span>
+      </a>
+    </li>
+    <!-- <li>
+      <a >
+        <i class="icon-logout"></i>
+      </a>
+    </li> -->
+  </ul>
+  <!-- / navbar right -->
+</div>
+<!-- / navbar collapse -->

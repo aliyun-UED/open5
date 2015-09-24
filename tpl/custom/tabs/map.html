@@ -1,0 +1,27 @@
+<div>
+  <div class="tab-block">
+    <button class="btn btn-info btn-block" style="padding-top:2px;padding-bottom:2px;">替换图片</button>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">模糊</label>
+      <div class="pull-left" style="padding-left:0;">
+        <slider ng-model="opacity" min="0" step="1" max="100" value="0"></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{opacity || '0'}}%</span></div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group">
+      <label class="col-sm-3 control-label required">地址</label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-map-marker"></i></div>
+          <input type="text" class="form-control" id="exampleInputAmount" placeholder="输入地址">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

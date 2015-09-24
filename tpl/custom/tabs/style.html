@@ -1,0 +1,62 @@
+<div>
+  <div class="tab-block clearfix">
+    <div class="form-group">
+      <label class="col-sm-4 control-label">背景颜色</label>
+      <div class="col-sm-8" style="padding-left:0;">
+        <div class="colorpicker-container" input-colorpicker ng-model="vm.css.backgroundColor"></div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0px;">
+      <label class="col-sm-3 control-label">边框</label>
+      <div class="col-sm-3" style="padding-left:0;padding-right:10px;">
+        <div class="btn-group dropdown-select" dropdown>
+          <button type="button" class="btn btn-default dropdown-select_trigger" dropdown-toggle >
+            <a href="" ng-show="vm.css.borderStyle!== 'none'"><div class="border {{vm.css.borderStyle=='none'? '':vm.css.borderStyle}}"></div></a>
+            <span ng-show="vm.css.borderStyle=='none'">无</span><span class="caret"></span>
+          </button>
+          <div class=""></div>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-click="vm.css.borderStyle = 'none'"><a href="">无</a></li>
+            <li ng-click="vm.css.borderStyle = 'solid'"><a href=""><div class="border solid"></div></a></li>
+            <li ng-click="vm.css.borderStyle = 'dashed'"><a href=""><div class="border dashed"></div></a></li>
+            <li ng-click="vm.css.borderStyle = 'dotted'"><a href=""><div class="border dotted"></div></a></li>
+            <li ng-click="vm.css.borderStyle = 'double'"><a href=""><div class="border double"></div></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-3" style="padding-left:0;padding-right:10px;">
+        <input spinner unit="px" ng-model="vm.css.borderWidth" type="text" class="form-control" >
+      </div>
+      <div class="col-sm-3" style="padding-left:0">
+        <span colorpicker ng-model="vm.css.borderColor"></span>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix slider-block" style="margin-bottom:10px;">
+      <label class="col-sm-4 control-label">阴影</label>
+      <div class="pull-left" style="padding-left:0;">
+        <slider ng-model="vm.css.boxShadow" min="0" step="1" max="100" value="0" shadow-slider-helper transform-value="transformShadow"></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{formatShadow()}}px</span></div>
+    </div>
+    <div class="form-group clearfix slider-block" style="margin-bottom:10px;">
+      <label class="col-sm-4 control-label">不透明度</label>
+      <div class="pull-left" style="padding-left:0;">
+        <slider ng-model="vm.css.opacity" min="0" step="1" max="100" value="0" opacity-slider-helper transform-value="transform"></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{formatOpacity()}}%</span></div>
+    </div>
+    <div class="form-group clearfix slider-block" style="margin-bottom:10px;">
+      <label class="col-sm-4 control-label">圆角</label>
+      <div class="pull-left" style="padding-left:0;">
+        <slider ng-model="vm.css.borderRadius" min="0" step="1" max="100" unit="px" slider-helper></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{vm.css.borderRadius}}</span></div>
+    </div>
+  </div>
+</div>

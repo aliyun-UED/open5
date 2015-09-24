@@ -1,0 +1,84 @@
+
+<div>
+  <div class="tab-block clearfix">
+    <div class="animate-stack">
+      <div class="animate-block" ng-repeat="animate in vm.animations">
+        <div class="animate-block-bar clearfix" ng-init="isOpen=true" ng-click="isOpen=!isOpen">
+          <span class="animate-icon" ng-show="!isOpen"><i class="fa fa-caret-left"></i></span>
+          <span class="animate-icon" ng-show="isOpen"><i class="fa fa-caret-down"></i></span>
+          <span class="animate-name">{{'动画' + ($index + 1)}}</span>
+          <span class="animate-close pull-right" ng-click="vm.del(animate)"><i class="fa fa-times"></i></span>
+        </div>
+        <div class="animate-block-content" ng-show="isOpen">
+          <div class="form-group clearfix" style="margin-bottom:10px">
+            <label class="col-sm-4 control-label">动画方式</label>
+            <select class="form-control"
+                    style="width:196px; border:1px solid #C9C9C9;"
+                    ng-model="animate.current"
+                    ng-change="vm.updateAnimation(animate, $index, animType)"
+                    ng-options="animType as animType.name group by animType.cat for animType in vm.animTypeEnum">
+            </select>
+          </div>
+          <div class="form-group clearfix" style="margin-bottom:10px" ng-if="animate.current.direction">
+            <label class="col-sm-4 control-label">运动方向</label>
+            <select class="form-control"
+                    style="width:196px; border:1px solid #C9C9C9;"
+                    ng-model="animate.direction"
+                    ng-change="vm.updateDirection(animate)"
+                    ng-options="obj.value as obj.label for obj in animate.current.direction">
+            </select>
+          </div>
+          <div ng-show="animate.type != 'none'">
+            <hr>
+            <div class="form-group clearfix slider-block" style="margin-bottom:10px">
+              <label class="col-sm-4 control-label">开始时间</label>
+              <div class="pull-left" style="padding-left:0;">
+                <slider ng-model="animate.delay"
+                        min="0" step="0.1" max="10"></slider>
+              </div>
+              <div class="pull-left"><span class="slider_show" style="margin-left:13px;">{{animate.delay || 0}}s</span></div>
+            </div>
+            <div class="form-group clearfix slider-block" style="margin-bottom:10px">
+              <label class="col-sm-4 control-label">持续时间</label>
+              <div class="pull-left" style="padding-left:0;">
+                <slider ng-model="animate.duration"
+                        min="0" step="0.1" max="20"></slider>
+              </div>
+              <div class="pull-left"><span class="slider_show" style="margin-left:13px;">{{animate.duration || 0}}s</span></div>
+            </div>
+            <hr>
+            <div class="form-group clearfix" style="margin-bottom:15px">
+              <label class="col-sm-4 control-label">执行次数</label>
+              <select class="form-control"
+                      style="width:196px; border:1px solid #C9C9C9;"
+                      ng-model="animate.repeat"
+                      ng-options="obj.value as obj.label for obj in vm.animRepeat">
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="animate-btns" style="margin-top:15px;">
+      <div class="row">
+        <div class="col-sm-6" style="padding-right:5px;">
+          <button class="btn btn-primary btn-block" ng-click="vm.create()">添加动画</button>
+        </div>
+        <div class="col-sm-6" style="padding-left:5px;">
+          <button class="btn btn-success btn-block"
+                  ng-if="!vm.playing"
+                  ng-click="vm.play()">播放动画</button>
+          <!-- <button class="btn btn-success btn-block"
+                  ng-if="vm.playing">播放中</button> -->
+          <!-- <button class="btn btn-success btn-block"
+                  ng-click="vm.player.pause()"
+                  ng-if="vm.playing">暂停动画</button> -->
+          <button class="btn btn-danger btn-block"
+                  ng-click="vm.stop()"
+                  ng-if="vm.playing">停止动画</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

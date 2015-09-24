@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+  <meta charset="utf-8" />
+  <title>Open5 editor</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="renderer" content="webkit">
+
+  <!-- build:css css/main.css -->
+  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="/css/bg.css" type="text/css" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/css/jquery.contextMenu.css" type="text/css" />
+  <link rel="stylesheet" href="/bower_components/angularjs-toaster/toaster.css" type="text/css" />
+  <link rel="stylesheet" href="/bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="/bower_components/cropper/dist/cropper.css">
+  <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="/js/lib/jquery-spinner/jquery.spinner.css">
+  <link rel="stylesheet" type="text/css" href="/js/lib/jquery-selectBoxIt/css/jquery.selectBoxIt.css">
+  <link rel="stylesheet" href="/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="/css/player.css" type="text/css" />
+  <!-- endbuild -->
+
+</head>
+<body ng-controller="AppCtrl">
+  <toaster-container></toaster-container>
+  <div ui-view class="app app-header-fixed app-aside-fixed page-edit" id="app">
+  </div>
+  <script>
+    window.appConfig = {
+      isadmin: false,
+      uid: '<%= uid %>',
+      oss: {
+        bucket: "<%= bucket %>",
+        endpoint: "<%= ossEndpoint %>"
+      },
+      public: {
+        image: {
+          host: "<%= publicImageHost %>"
+        },
+        bg: {
+          host: "<%= publicBgHost %>"
+        },
+        music: {
+          host: "<%= publicMusicHost %>"
+        }
+      },
+      user: {
+        image: {
+          host: "<%= userImageHost %>"
+        },
+        bg: {
+          host: "<%= userBgHost %>"
+        },
+        music: {
+          host: "<%= userMusicHost %>"
+        }
+      },
+      token: {
+        sts: null,
+        url: '/token'
+      }
+    };
+  </script>
+
+  <!-- build:js js/main.js -->
+  <script src="/js/config.page.js"></script>
+
+  <script src="/bower_components/jquery/jquery.min.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/xss/dist/xss.js"></script>
+
+  <script src="/js/gsap/src/uncompressed/TweenLite.js"></script>
+  <script src="/js/gsap/src/uncompressed/TimelineMax.js"></script>
+  <script src="/js/gsap/src/uncompressed/easing/EasePack.js"></script>
+  <script src="/js/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+  <script src="/js/gsap/src/uncompressed/utils/Draggable.js"></script>
+
+  <script src="/js/player/state-machine.js"></script>
+  <script src="/js/player/player.js"></script>
+  <script src="/js/player/player.loader.js"></script>
+  <script src="/js/player/player.page.js"></script>
+  <script src="/js/player/player.transformManager.js"></script>
+  <script src="/js/player/player.alignManager.js"></script>
+  <script src="/js/player/player.turn.js"></script>
+  <script src="/js/player/player.utils.js"></script>
+
+  <script src="/js/lib/jquery-event-drag-drop.js/jquery.event.drag.js"></script>
+  <script src="/js/lib/jquery-event-drag-drop.js/jquery.event.drag.live.js"></script>
+  <script src="/js/lib/jquery-event-drag-drop.js/jquery.event.drop.js"></script>
+  <script src="/js/lib/jquery-event-drag-drop.js/jquery.event.drop.live.js"></script>
+
+  <script src="/bower_components/aliyun-sdk/dist/aliyun-sdk.min.js"></script>
+  <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angularjs-toaster/toaster.js"></script>
+  <script src="/bower_components/ngstorage/ngStorage.js"></script>
+
+  <script src="/bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+  <script src="/bower_components/spectrum/spectrum.js"></script>
+  <script src="/bower_components/jQuery-contextMenu/src/jquery.ui.position.js"></script>
+  <script src="/bower_components/jQuery-contextMenu/src/jquery.contextMenu.js"></script>
+  <script src="/bower_components/cropper/dist/cropper.js"></script>
+
+  <!-- rangy -->
+  <script src="/bower_components/rangy/rangy-core.js"></script>
+  <script src="/bower_components/rangy/rangy-selectionsaverestore.js"></script>
+  <script src="/bower_components/rangy/rangy-classapplier.js"></script>
+  <script src="/bower_components/rangy/rangy-highlighter.js"></script>
+
+  <script src="/js/lib/jquery-spinner/jquery.spinner.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.scroll.js"></script>
+  <script src="/js/lib/jquery-selectBoxIt/js/jquery.selectBoxIt.js"></script>
+  <script src="/bower_components/audio5js/audio5.js"></script>
+
+  <script src="/js/directives/ui-bootstrap-slider.js"></script>
+  <script src="/js/directives/ui-colorpicker.js"></script>
+  <script src="/js/directives/ui-spinner.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/directives/uploader.js"></script>
+
+  <script src="/js/states/app.js"></script>
+  <script src="/js/states/app.loading.js"></script>
+
+  <script src="/js/states/app.preview.js"></script>
+  <script src="/js/states/app.edit.js"></script>
+  <script src="/js/states/app.edit.page.js"></script>
+  <script src="/js/states/app.edit.page.image.js"></script>
+  <script src="/js/states/app.edit.page.text.js"></script>
+  <script src="/js/states/app.edit.page.setting.js"></script>
+  <script src="/js/states/app.edit.page.selected.js"></script>
+
+  <script src="/js/states/app.gallery.js"></script>
+  <script src="/js/states/app.music.js"></script>
+  <script src="/js/states/app.templates.js"></script>
+  <script src="/js/states/app.crop.js"></script>
+
+  <script src="/js/helper.js"></script>
+  <script src="/js/tabsCtrls.js"></script>
+  <script src="/js/filters/common.js"></script>
+
+  <script src="/js/directives/pagePreview.js"></script>
+  <script src="/js/directives/pageTemplatePreview.js"></script>
+  <script src="/js/directives/greensockSortable.js"></script>
+  <script src="/js/directives/ngSelectBoxIt.js"></script>
+
+  <script src="/js/directives/ui-cropper.js"></script>
+
+  <script src="/js/services/remoteService.js"></script>
+  <script src="/js/services/aliyunService.js"></script>
+  <script src="/js/services/confirmDialog.js"></script>
+  <script src="/js/services/docService.js"></script>
+  <script src="/js/services/commonService.js"></script>
+  <script src="/js/tpls.min.js"></script>
+  <!-- endbuild -->
+
+  <div class="page-loading">
+    <div class="loading-icon"><i class="fa fa-spinner fa-spin"></i></div>
+  </div>
+</body>
+</html>

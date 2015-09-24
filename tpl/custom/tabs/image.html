@@ -1,0 +1,57 @@
+<div>
+  <div class="tab-block">
+    <button class="btn btn-primary btn-custom" ng-click="open()" style="width:138px;margin-right:8px;">替换图片</button>
+    <button class="btn btn-custom" ng-click="crop();" style="width:138px">剪裁图片</button>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group slider-block">
+      <label class="col-sm-3 control-label">模糊</label>
+      <div class="pull-left" ng-init="abc" style="padding-left:0;">
+        <slider ng-model="abc" ng-change="vm.css.filter = abc; vm.css['-webkit-filter'] = abc;" min="0" step="1" max="100" filter-slider-helper transform-value="transform"></slider>
+      </div>
+      <div class="pull-left"><span class="slider_show">{{formatFilter()}}%</span></div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix" ng-controller="linkCtrl">
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-3 control-label">链接</label>
+      <div class="col-sm-9" style="padding-left:0;">
+        <select ng-select-box-it ng-options="link.type as link.name for link in store.linkList" ng-model="store.link.type" ng-change="store.onSelect();"></select>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'web'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <label class="col-sm-6 control-label">在作品里打开网页</label>
+      <div class="col-sm-6 text-right">
+        <div class="btn-group" choice ng-model="store.link.target" data-default="self">
+          <button type="button" class="btn btn-default btn-custom" data-value="self">是</button>
+          <button type="button" class="btn btn-default btn-custom" data-value="blank">否</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'web'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-globe"></i></div>
+          <input type="text" ng-keydown="$event.stopPropagation();" class="form-control" ng-model="store.link.value" placeholder="请输入正确的网址" ng-change="store.onChange()" spellcheck="false">
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'tel'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+          <input type="text" ng-keydown="$event.stopPropagation();" class="form-control" ng-model="store.link.value" placeholder="请输入正确的电话号码" ng-change="store.onChange()" spellcheck="false">
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'page'" style="margin-bottom:0;margin-top:10px;">
+      <label class="col-sm-3 control-label">页码</label>
+      <div class="col-sm-9" style="padding-left:0">
+        <select ng-select-box-it ng-options="page.id as page.label for page in store.pageList" ng-model="store.link.value"></select>
+      </div>
+    </div>
+  </div>
+
+</div>

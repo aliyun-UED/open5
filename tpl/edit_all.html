@@ -1,0 +1,72 @@
+<!-- navbar -->
+<div data-ng-include=" '/tpl/blocks/header.html' " class="app-header navbar">
+</div>
+<!-- / navbar -->
+
+<!-- aside -->
+<div class="app-aside hidden-xs edit_aside" ui-view="pages">
+</div>
+<!-- / aside -->
+
+<div ui-view="popup"></div>
+
+<!-- content -->
+<div class="app-content" >
+  <div ui-butterbar></div>
+  <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+  <div class="app-content-body fade-in-up edit_body">
+    <div class="edit_main">
+      <div class="mask-left mask-style">mask-left</div>
+      <div class="device_wrap">
+        <div class="device">
+          <div class="mask-border-top mask-style"></div>
+          <div class="mask-border-bottom mask-style"></div>
+          <div class="device-border-left"></div>
+          <div class="device-border-right"></div>
+          <div class="device-top"></div>
+          <div class="device-menubar">{{docProperties.name}}</div>
+          <div class="device-body">
+            <div class="device-custom-bg">
+              <div class="page-global-bg"></div>
+              <div class="page-layers" style="position: relative;">
+                <div id="player" style="width: 320px; height: 506px;">
+                  <div class="operate" style="display: none;">
+                    <div class="proxy"></div>
+                    <div class="rotate">
+                      <div class="circle" data-delta="rotate">
+                        <div class="circle-inner"></div>
+                      </div>
+                      <div class="line"></div>
+                    </div>
+                    <div class="scale scale-nw" direction="nw"></div>
+                    <div class="scale scale-n" direction="n"></div>
+                    <div class="scale scale-ne" direction="ne"></div>
+                    <div class="scale scale-w" direction="w"></div>
+                    <div class="scale scale-e" direction="e"></div>
+                    <div class="scale scale-sw" direction="sw"></div>
+                    <div class="scale scale-s" direction="s"></div>
+                    <div class="scale scale-se" direction="se"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="device-bottom"></div>
+          <div class="components">
+            <div ng-show="global.music" class="components_music">
+              <span>音乐</span>
+              <span ng-click="closeMusic()"><i class="fa fa-times"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mask-right mask-style">mask-right</div>
+    </div>
+  </div>
+</div>
+<!-- /content -->
+
+<!-- panel -->
+<div ui-view="page-panel" class="edit_panel"></div>
+<!-- panel -->
+

@@ -1,0 +1,382 @@
+@keyframes rotating {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg)
+  }
+  to {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
+@-moz-keyframes rotating {
+  from {
+    -moz-transform: rotate(0deg)
+  }
+  to {
+    -moz-transform: rotate(360deg)
+  }
+}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  -webkit-touch-callout: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+#player {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
+  //font-weight: 300;
+  font-size: 14px;
+  //line-height: 1.231;
+
+  .content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // overflow: hidden;
+
+    .page {
+      position: absolute;
+      display: none;
+
+      &.current {
+        display: block !important;
+        z-index: 0;
+      }
+
+      &.next {
+        display: block !important;
+        z-index: 1;
+      }
+    }
+
+    .viewport {
+      position: absolute;
+      overflow: hidden;
+    }
+
+    .element {
+      visibility: hidden;
+    }
+  }
+
+  .dragproxy {
+    display: none;
+  }
+
+  .audio_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 200;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+
+    &.off {
+      background-image: url(../images/music_off.png);
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &.on {
+      background-image: url(../images/music.gif);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 60px 60px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        background-size: 100% 100%;
+        background-image: url(../images/music_off.png);
+        -webkit-animation: rotating 1.2s linear infinite;
+        -moz-animation: rotating 1.2s linear infinite;
+        -o-animation: rotating 1.2s linear infinite;
+        animation: rotating 1.2s linear infinite;
+      }
+    }
+  }
+}
+
+.element .element-container {
+  width: 100%;
+  height: 100%;
+}
+
+.element[type="text"] .element-container,
+.element[type="image"] .element-container {
+  overflow: hidden;
+}
+.element[type="image"] .element-content {
+  width: 100%;
+  height: 100%;
+}
+
+.element {
+  position: absolute;
+  .anim_visible {
+    visibility: visible !important;
+  }
+  .element-inner {
+    width: 100%;
+    height: 100%;
+    // overflow: hidden;
+  }
+  .element-content {
+    word-wrap: break-word;
+    width: 100%;
+    // height: 100%;
+    touch-action: pan-x pan-y;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: default;
+  }
+  img {
+    vertical-align: top;
+    user-select: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+  }
+
+
+
+  font[size="1"] {
+    font-size: 9px
+  }
+  font[size="2"] {
+    font-size: 10px
+  }
+  font[size="3"] {
+    font-size: 11px
+  }
+  font[size="4"] {
+    font-size: 12px
+  }
+  font[size="5"] {
+    font-size: 14px
+  }
+  font[size="6"] {
+    font-size: 16px
+  }
+  font[size="7"] {
+    font-size: 18px
+  }
+  font[size="8"] {
+    font-size: 20px
+  }
+  font[size="9"] {
+    font-size: 24px
+  }
+  font[size="10"] {
+    font-size: 28px
+  }
+  font[size="11"] {
+    font-size: 32px
+  }
+  font[size="12"] {
+    font-size: 36px
+  }
+  font[size="13"] {
+    font-size: 40px
+  }
+  font[size="14"] {
+    font-size: 44px
+  }
+  font[size="15"] {
+    font-size: 48px
+  }
+  font[size="16"] {
+    font-size: 54px
+  }
+  font[size="17"] {
+    font-size: 60px
+  }
+  font[size="18"] {
+    font-size: 66px
+  }
+  font[size="19"] {
+    font-size: 72px
+  }
+  font[size="20"] {
+    font-size: 80px
+  }
+  font[size="21"] {
+    font-size: 88px
+  }
+  font[size="22"] {
+    font-size: 96px
+  }
+  font[size="23"] {
+    font-size: 108px
+  }
+  font[size="24"] {
+    font-size: 120px
+  }
+  font[size="25"] {
+    font-size: 136px
+  }
+  font[size="26"] {
+    font-size: 150px
+  }
+}
+
+.page .page-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .page-bg-inner {
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}

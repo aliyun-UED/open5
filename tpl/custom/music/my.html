@@ -1,0 +1,10 @@
+<div style="position:relative;">
+  <ui-select ng-model="vm.my" theme="bootstrap" style="width:296px;margin-bottom:20px;" >
+    <ui-select-match placeholder="请选择音乐">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="music in myMusic" >
+      <span>{{music.name}}</span>
+    </ui-select-choices>
+  </ui-select>
+  <audio controls="controls" style="width:296px;" class="" src="http://s.echuandan.com/music/hk03.mp3"></audio>
+  <span class="music-upload">上传音乐</span>
+</div>

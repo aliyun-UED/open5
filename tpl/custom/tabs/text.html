@@ -1,0 +1,136 @@
+<div>
+  <div class="tab-block clearfix" style="margin-bottom:-6px;">
+    <div class="clearfix" style="margin-bottom:8px;">
+      <div class="col-sm-7">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0">字体</label>
+          <div class="col-sm-8" style="padding-left:0;padding-right:0">
+            <select ng-select-box-it ng-options="font.label for font in vm.fontFamilyList" ng-model="vm.font" on-select="vm.onChange(font)"></select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-11">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0;width:46.2px;">背景</label>
+          <div class="col-sm-9" style="padding-left:0;padding-right:0">
+            <div class="colorpicker-container" input-colorpicker ng-model="vm.css.backgroundColor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-11">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0;width:46.2px;">颜色</label>
+          <div class="col-sm-9" style="padding-left:0;padding-right:0">
+            <div class="colorpicker-container" input-colorpicker ng-model="vm.css.color"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="form-group clearfix" style="margin-bottom:0px">
+      <label class="col-sm-4 control-label" style="padding-right:0;">垂直对齐</label>
+      <div class="col-sm-8">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" ng-click="vm.verticalTop()"><i class="fa fa-align-left"></i></button>
+          <button type="button" class="btn btn-default" ng-click="vm.verticalCenter()"><i class="fa fa-align-center"></i></button>
+          <button type="button" class="btn btn-default" ng-click="vm.verticalBottom()"><i class="fa fa-align-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix">
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">字间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="vm.css.letterSpacing" type="text" class="form-control" >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">行间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="" step="0.1" max="5" precision="1" ng-model="vm.css.lineHeight" type="text" class="form-control" on-change="vm.updateHeight();">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix" style="margin-bottom:10px;">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">左间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="vm.css.paddingLeft" type="text"  value="0px" class="form-control" >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">右间距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="vm.css.paddingRight" type="text"  value="0px" class="form-control" on-change="vm.updateHeight();">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" style="padding-left:0;padding-right:0">上边距</label>
+          <div class="col-sm-8">
+            <input spinner unit="px" ng-model="vm.css.paddingTop" type="text"  value="0px" class="form-control" on-change="vm.updateHeight();">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="tab-block clearfix" ng-controller="linkCtrl">
+    <div class="form-group clearfix" style="margin-bottom:0;">
+      <label class="col-sm-3 control-label">链接</label>
+      <div class="col-sm-9" style="padding-left:0;">
+        <select ng-select-box-it ng-options="link.type as link.name for link in store.linkList" ng-model="store.link.type" ng-change="store.onSelect();"></select>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'web'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <label class="col-sm-6 control-label">在作品里打开网页</label>
+      <div class="col-sm-6 text-right">
+        <div class="btn-group" choice ng-model="store.link.target" data-default="self">
+          <button type="button" class="btn btn-default btn-sm" data-value="self">是</button>
+          <button type="button" class="btn btn-default btn-sm" data-value="blank">否</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'web'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-globe"></i></div>
+          <input type="text" ng-keydown="$event.stopPropagation();" class="form-control" ng-model="store.link.value" placeholder="请输入正确的网址" ng-change="store.onChange();" spellcheck="false">
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'tel'" style="margin-bottom:0;margin-top:10px;margin-right:-5px">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+          <input type="text" ng-keydown="$event.stopPropagation();" class="form-control" ng-model="store.link.value" placeholder="请输入正确的电话号码" ng-change="store.onChange()" spellcheck="false">
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix" ng-if="store.link.type == 'page'" style="margin-bottom:0;margin-top:10px;">
+      <label class="col-sm-3 control-label">页码</label>
+      <div class="col-sm-9" style="padding-left:0">
+        <select ng-select-box-it ng-options="page.id as page.label for page in store.pageList" ng-model="store.link.value"></select>
+      </div>
+    </div>
+  </div>
+</div>

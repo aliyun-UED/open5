@@ -1,0 +1,48 @@
+<div>
+  <div class="modal-header">
+    <!-- header -->
+    <header class="crop-tile">图片剪切</header>
+    <div class="crop-sub-tile">设置你要剪切的图片区域，通过阿里云图片处理服务裁剪</div>
+  </div>
+  <div class="modal-body" cropper-wrap>
+    <!-- body -->
+    <div class="crop-wrap clearfix">
+      <div class="crop-display pull-left">
+        <div class="crop-display-inner" cropper ng-model="cropImage" on-built="onBuilt()"></div>
+        <div class="crop-loading" ng-show="store.onBuilding">
+          <span class="loading-content"><i class="fa fa-spinner fa-spin"></i></span>
+        </div>
+        <div class="crop-loading crop-processing" ng-show="store.processing">
+          <span class="loading-content">正在处理中...</span>
+        </div>
+      </div>
+      <div class="crop-operate pull-left">
+        <div class="crop-label">设置剪切比例:</div>
+        <div class="btn-group" style="margin-bottom:10px;">
+          <button type="button" class="btn btn-default" ng-click="setRatio('16:9')">16:9</button>
+          <button type="button" class="btn btn-default" ng-click="setRatio('4:3')">4:3</button>
+          <button type="button" class="btn btn-default" ng-click="setRatio('1:1')">1:1</button>
+          <button type="button" class="btn btn-default" ng-click="setRatio('free')">自由</button>
+        </div>
+        <div class="crop-label">旋转:</div>
+        <div class="btn-group" style="margin-bottom:10px;">
+          <button type="button" class="btn btn-default" ng-click="rotate(true)">右旋45度</button>
+          <button type="button" class="btn btn-default" ng-click="rotate()">左旋45度</button>
+        </div>
+        <div class="crop-label">缩放:</div>
+        <div class="btn-group" style="margin-bottom:10px;">
+          <button type="button" class="btn btn-default" ng-click="zoom()">放大</button>
+          <button type="button" class="btn btn-default" ng-click="zoom('in')">缩小</button>
+        </div>
+        <div class="crop-preview"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- footer -->
+    <div class="crop-btns">
+      <button class="btn btn-primary crop-check" ng-click="ok();">确定</button>
+      <button class="btn crop-cancel" ng-click="cancel();">取消</button>
+    </div>
+  </div>
+</div>

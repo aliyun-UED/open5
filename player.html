@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+  <meta charset="utf-8"/>
+  <title>Open5 player</title>
+  <meta name="description" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="renderer" content="webkit">
+
+  <!-- build:css css/player.css -->
+  <link rel="stylesheet" href="css/player.css" type="text/css"/>
+  <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+  <!-- endbuild -->
+</head>
+<body>
+
+<div id="loader" style="width: 66px; height: 66px; top: 50%; left: 50%; position: absolute; margin: -33px 0 0 -33px;">
+  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+  </svg>
+</div>
+
+<div id="player"></div>
+
+<!-- build:js js/player.js -->
+<script src="bower_components/zepto/zepto.js"></script>
+
+<script src="js/gsap/src/uncompressed/TweenLite.js"></script>
+<script src="js/gsap/src/uncompressed/easing/EasePack.js"></script>
+<script src="js/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/src/uncompressed/utils/Draggable.js"></script>
+
+<script src="js/player/state-machine.js"></script>
+<script src="js/player/player.js"></script>
+<script src="js/player/player.loader.js"></script>
+<script src="js/player/player.page.js"></script>
+<script src="js/player/player.transformManager.js"></script>
+<script src="js/player/player.alignManager.js"></script>
+<script src="js/player/player.turn.js"></script>
+<script src="js/player/player.utils.js"></script>
+<!-- endbuild -->
+
+<script>
+  var player = window.Player.create('#player', "http://open5.oss-cn-hangzhou.aliyuncs.com/publish/demo.json");
+  player.startLoad();
+</script>
+
+</body>
+</html>

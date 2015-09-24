@@ -1,0 +1,14 @@
+node_modules/
+
+resources/
+api/
+img/
+bower_components/
+js/tpls.min.js
+.idea
+.DS_Store
+test.html
+
+test.js
+config.js
+dist
