@@ -4,7 +4,7 @@ module.exports = {
   accessKeyId: '',
   secretAccessKey: '',
 
-  // oss
+  // 在准备工作阶段创建的 OSS bucket
   bucket: 'open5',
 
   // 根据你的 oss 实例所在地区选择填入
@@ -15,26 +15,32 @@ module.exports = {
   // 香港：http://oss-cn-hongkong.aliyuncs.com
   ossEndpoint: 'http://oss-cn-hangzhou.aliyuncs.com',
 
-  // ram设置的账号id
+  // 阿里云账号 ID, 可以在 https://account.console.aliyun.com/#/secure 找到
   accountId: '',
 
-  // ram设置的用户名字
+  // 创建的 RAM 用户的名称, 可以自己设置, 也可以用下面的默认值
   userName: 'user-open5',
 
-  // ram设置的角色名字
+  // 创建的 RAM 角色的名称, 可以自己设置, 也可以用下面的默认值
   roleName: 'role-open5',
 
-  // 上传文件中的user目录下的文件夹
-  // 里面存储用户的信息，每个用户生成一个文件夹
-  // 该值不能重复
+  // 在 setup 时会在 OSS Bucket 中上传初始的一些静态资源, 并且还会创建一个 demo 用户, 不需要修改
   uid: 'demo',
 
-  // 如果需要使用 oss 图片服务, 需要为
+  // 目前使用 OSS 图片服务, 需要绑定域名并且开通 CDN 加速, 如 http://open5.net 绑定的域名就是
   // http://image.open5.net
+  // 如果你已经完成上述工作, 那么可以将域名填入.
+  // 之所以会有 4 个 host, 是因为我们假设你希望将 public/image, public/bg, user/image, user/bg 放在 4 个不同的 Bucket 下面, 这样就分别会有 4 个绑定的域名.
+  // 一般情况下只需要 1 个 域名.
+  // 如果你不填, Open5 也可以工作, 但是涉及到图片服务的地方会显示加载错误.
   publicImageHost: '',
   publicBgHost: '',
   userImageHost: '',
   userBgHost: '',
+
+  // 原理与上面类似, 不过这里不是为了使用图片服务, 而是为了使用 CDN 加速.
+  // 如果你已经使用了 OSS 的 CDN 加速, 那么可以将域名填入.
+  // 如果你不填, Open5 也可以工作, 并且没有错误产生.
   publicMusicHost: '',
   userMusicHost: ''
 
