@@ -29,8 +29,8 @@ Open5 使用 Node 作为初始开发环境, 在了解 Open5 的工作原理之�
 
 + 申请阿里云账号: [注册账号](https://account.aliyun.com/login/login.htm)
 + 进入 AK 控制台, 创建你的阿里云根 AK: [创建](https://ak-console.aliyun.com/#/accesskey)
-+ 进入 OSS 控制台
-  + 创建 Bucket ([https://oss.console.aliyun.com/index#/]), 读写权限设置为 公共读
++ 进入 OSS 控制台 (https://oss.console.aliyun.com/index#/)
+  + 创建 Bucket, 读写权限设置为 公共读
   + 为 Bucket 设置 cors, 其中来源为 *, Method 为 GET, POST, PUT, DELETE, HEAD, Allowed Header 为 *
   + 根据需要开通图片服务
 + 进入 RAM 控制台, 开通 RAM 服务, 请注意如果 RAM 还在公测阶段的话, 需要先申请公测资格.
