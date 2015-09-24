@@ -18,7 +18,8 @@ module.exports = function (callback) {
   walker.on('file', function(root, stat, next) {
     var filepath = root + '/' + stat.name;
     var tmpPath = filepath.replace(/^(\.\/|\/)/, '');
-    var uploadpath = tmpPath.split('/').splice(1).join('/');
+    console.log(filepath, tmpPath);
+    var uploadpath = tmpPath.split('resources/').splice(1).join('/');
 
     console.log('upload file: ', uploadpath);
     upload(bucketName, filepath, uploadpath, next);
