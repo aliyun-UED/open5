@@ -5,7 +5,7 @@ Open5 - 基于阿里云 [Open API](https://docs.aliyun.com) 的开源 H5 生成�
 
 **项目主页：** http://open5.net/
 
-**查看演示：** http://open5.net/demo#/app/demo.json
+**查看演示：** http://open5.net/try
 
 ---------------
 
