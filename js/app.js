@@ -38,8 +38,8 @@ var app = angular.module('app', [
   'ui.bootstrap-slider',
   'ui.colorpicker',
   'ui.spinner',
-  'ui.cropper',
-  'app.tpls'
+  //'app.tpls',
+  'ui.cropper'
 ]);
 
 app.config(['$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$urlRouterProvider',

@@ -12,3 +12,4 @@ test.js
 config.js
 dist
 server.json
+gulpfile.js
