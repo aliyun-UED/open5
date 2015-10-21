@@ -93,8 +93,8 @@ gulp.task('deploy', ['build'], function () {
   gulp.src(['./dist/**/*'])
       .pipe(gzip({append: false}))
       .pipe(oss({
-        "key": "gsGS6uwZmspDEJoz",
-        "secret": "8T2YMn4yUdcif4zJ6f2lXdWBxMck6Y",
+        "key": "lR5cJTkWxFxeFLm6",
+        "secret": "NFT7uWJHLljjmERE8mxGJrQVz9fFdW",
         "endpoint": "http://oss-cn-hangzhou.aliyuncs.com"
       }, {
         headers: {
