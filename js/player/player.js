@@ -251,7 +251,7 @@
               type: 'GET',
               url: theData,
               success: function(data){
-                theData = data;
+                theData = JSON.parse(data);
                 _init();
               },
               error: function(xhr, type){
