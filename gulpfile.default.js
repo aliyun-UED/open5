@@ -74,39 +74,6 @@ gulp.task('templates', function (done) {
     .on('end', done);
 });
 
-gulp.task('deploy', ['build'], function () {
-  var p = require('./package.json');
-  var version = p.version || '1.0.0';
-
-  //var jscssFilter = filter(['**/*.js', '**/*.css']);
-
-  gulp.src(['./dist/editor.html'])
-      .pipe(replace(/js\/main\.js/, 'http://res.open5.net/open5/' + version + '/js/main.js'))
-      .pipe(replace(/css\/main\.css/, 'http://res.open5.net/open5/' + version + '/css/main.css'))
-      .pipe(gulp.dest('./dist/'));
-
-  gulp.src(['./dist/player.html'])
-      .pipe(replace(/js\/player\.js/, 'http://res.open5.net/open5/' + version + '/js/player.js'))
-      .pipe(replace(/css\/player\.css/, 'http://res.open5.net/open5/' + version + '/css/player.css'))
-      .pipe(gulp.dest('./dist/'));
-
-  gulp.src(['./dist/**/*'])
-      .pipe(gzip({append: false}))
-      .pipe(oss({
-        "key": "lR5cJTkWxFxeFLm6",
-        "secret": "NFT7uWJHLljjmERE8mxGJrQVz9fFdW",
-        "endpoint": "http://oss-cn-hangzhou.aliyuncs.com"
-      }, {
-        headers: {
-          Bucket: 'open5-assets',
-          CacheControl: 'public',         // 参考: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
-          ContentEncoding: 'gzip'         // 参考: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11
-        },
-        uploadPath: 'open5/' + version + '/'
-      }));
-
-});
-
 gulp.task('watch', function () {
   gulp.watch(paths.template, ['templates']);
   gulp.watch(paths.less, ['less']);
